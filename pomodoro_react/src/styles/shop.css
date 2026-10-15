@@ -1,0 +1,111 @@
+/* Стили страницы магазина: баланс, товары, сброс настроек и справка. */
+
+/* Всплывающее уведомление показывает результат покупки, бонуса или ошибки. */
+.shop-notification {
+    position: fixed; top: 100px; right: 30px; background: #10b981; color: white;
+    padding: 16px 25px; border-radius: 60px; box-shadow: 0 10px 30px rgba(16,185,129,0.4);
+    z-index: 1000; animation: slideInRight 0.3s ease; font-weight: 500;
+}
+
+/* Верхняя карточка объединяет баланс монет и быстрые действия. */
+.shop-header-card {
+    background: white; border-radius: 32px; padding: 24px 32px; margin-bottom: 32px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+body.dark .shop-header-card { background: #1e1e2f; border: 1px solid #2d2d44; }
+
+/* Баланс выделен отдельной цветной плашкой. */
+.shop-balance { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #f59e0b, #f97316); padding: 12px 28px; border-radius: 60px; color: white; }
+.shop-balance i { font-size: 28px; }
+.balance-value { font-size: 32px; font-weight: 700; }
+.balance-label { font-size: 16px; font-weight: 500; }
+.shop-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+.daily-bonus-btn { background: #4F46E5; color: white; border: none; padding: 14px 28px; border-radius: 60px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+.daily-bonus-btn:hover { background: #4338CA; transform: translateY(-2px); }
+.test-coins-btn { background: #22c55e; color: white; border: none; padding: 14px 28px; border-radius: 60px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+.test-coins-btn:hover { background: #16a34a; transform: translateY(-2px); }
+
+/* Категории магазина разделяют темы, звуки и аватары. */
+.shop-category { margin-bottom: 48px; }
+.category-title { font-size: 28px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; color: #2d3436; }
+body.dark .category-title { color: #e0e0e0; }
+.category-description { color: #2d3436; margin-bottom: 24px; font-size: 14px; }
+body.dark .category-description { color: #e0e0e0; }
+
+/* Товары раскладываются адаптивной сеткой. */
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.shop-item { background: white; border-radius: 28px; padding: 28px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+body.dark .shop-item { background: #1e1e2f; border: 1px solid #2d2d44; }
+.shop-item:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(0,0,0,0.15); }
+
+/* Предпросмотр темы использует градиент из AVAILABLE_THEMES. */
+.theme-preview-box { margin-bottom: 16px; border-radius: 20px; overflow: hidden; }
+.theme-preview-gradient { height: 100px; border-radius: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+.theme-preview-content { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 40px; color: white; font-weight: 500; backdrop-filter: blur(4px); }
+.shop-item-icon { width: 70px; height: 70px; margin: 0 auto 16px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; }
+.avatar-preview-icon { position: relative; }
+
+/* Название, описание и цена используются всеми типами товаров. */
+.shop-item-name { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #2d3436; }
+body.dark .shop-item-name { color: #e0e0e0; }
+.shop-item-description { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.5; }
+body.dark .shop-item-description { color: #aaa; }
+.shop-item-price { display: inline-flex; align-items: center; gap: 8px; background: #fef3c7; padding: 8px 20px; border-radius: 40px; font-size: 20px; font-weight: 700; color: #f59e0b; margin-bottom: 20px; }
+body.dark .shop-item-price { background: #2d2d44; color: #fbbf24; }
+
+/* У звуков есть отдельная кнопка предпрослушивания. */
+.sound-buttons { display: flex; flex-direction: column; gap: 10px; }
+.preview-sound-btn { background: #f0f0f0; border: none; padding: 10px; border-radius: 40px; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; }
+body.dark .preview-sound-btn { background: #2d2d44; color: #e0e0e0; }
+.preview-sound-btn:hover { background: #4F46E5; color: white; }
+.shop-item-btn { width: 100%; padding: 12px; border: none; border-radius: 60px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: #4F46E5; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.shop-item-btn:hover:not(:disabled) { background: #4338CA; transform: translateY(-2px); }
+
+/* Focus-состояния для интерактивных элементов магазина. */
+.daily-bonus-btn:focus-visible,
+.preview-sound-btn:focus-visible,
+.shop-item-btn:focus-visible,
+.reset-btn:focus-visible {
+    outline: 3px solid rgba(79,70,229,0.25);
+    outline-offset: 3px;
+}
+.shop-item-btn.active { background: #10b981; }
+.shop-item-btn.purchased { background: #10b981; cursor: default; }
+.shop-item-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* Раздел сброса возвращает тему и звук к стандартным значениям. */
+.reset-section { background: white; border-radius: 32px; padding: 32px; margin-bottom: 32px; }
+body.dark .reset-section { background: #1e1e2f; border: 1px solid #2d2d44; }
+.reset-title { font-size: 24px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; color: #2d3436; }
+body.dark .reset-title { color: #e0e0e0; }
+.reset-buttons { display: flex; flex-wrap: wrap; gap: 15px; }
+.reset-btn { padding: 12px 24px; border: none; border-radius: 60px; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
+.theme-reset, .sound-reset { background: #f0f0f0; color: #666; }
+.theme-reset:hover, .sound-reset:hover { background: #e0e0e0; transform: translateY(-2px); }
+.all-reset { background: #ef4444; color: white; }
+.all-reset:hover { background: #dc2626; transform: translateY(-2px); }
+body.dark .theme-reset, body.dark .sound-reset { background: #2d2d44; color: #aaa; }
+body.dark .theme-reset:hover, body.dark .sound-reset:hover { background: #3d3d5c; color: #e0e0e0; }
+
+/* Справка внизу магазина показывает способы получения монет. */
+.shop-info-card { background: white; border-radius: 32px; padding: 32px; }
+body.dark .shop-info-card { background: #1e1e2f; border: 1px solid #2d2d44; }
+.shop-info-card h3 { font-size: 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; color: #2d3436; }
+body.dark .shop-info-card h3 { color: #e0e0e0; }
+.info-list { display: flex; flex-direction: column; gap: 16px; }
+.info-item { display: flex; align-items: center; gap: 15px; padding: 12px 20px; background: #f8faff; border-radius: 20px; font-size: 16px; }
+body.dark .info-item { background: #2d2d44; }
+.info-item i { font-size: 24px; color: #4F46E5; }
+.info-item span { color: #666; }
+body.dark .info-item span { color: #aaa; }
+.info-item strong { color: #f59e0b; font-weight: 700; }
+
+/* На мобильных экранах магазин становится одноколоночным. */
+@media (max-width: 768px) {
+    .shop-header-card { flex-direction: column; text-align: center; }
+    .shop-grid { grid-template-columns: 1fr; }
+    .shop-notification { left: 20px; right: 20px; top: auto; bottom: 30px; text-align: center; }
+    .reset-buttons { flex-direction: column; }
+    .reset-btn { justify-content: center; }
+}

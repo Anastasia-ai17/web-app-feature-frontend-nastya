@@ -1,0 +1,5 @@
+# https://www.robotstxt.org/robotstxt.html
+# Правила индексации для поисковых роботов.
+User-agent: *
+# Пустой Disallow означает, что сайт не закрыт от индексации.
+Disallow:

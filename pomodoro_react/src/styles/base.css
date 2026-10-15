@@ -1,0 +1,53 @@
+/* Стили общего layout-компонента Base: шапка, навигация и область страницы. */
+
+/* Sticky-шапка остаётся сверху при прокрутке и визуально отделяет навигацию от контента. */
+.header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; transition: background 0.3s ease; }
+body.dark .header { background: #1e1e2f; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.header-content { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+
+/* Логотип сделан кнопкой, чтобы по нему можно было вернуться на главную через React Router. */
+.logo {
+    display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 700; color: #4F46E5;
+    cursor: pointer; background: none; border: none; padding: 0;
+}
+.logo i { font-size: 24px; }
+
+/* Навигация использует active-класс от NavLink. */
+.nav { display: flex; gap: 24px; align-items: center; }
+.nav-link {
+    text-decoration: none; color: #666; font-weight: 500; padding: 8px 12px;
+    border-radius: 8px; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;
+    background: none; border: none; cursor: pointer; font-size: 16px;
+}
+body.dark .nav-link { color: #aaa; }
+.nav-link:hover { background: #f0f0f0; color: #333; }
+body.dark .nav-link:hover { background: #2d2d44; color: #fff; }
+.nav-link.active { color: #4F46E5; background: #EEF2FF; }
+body.dark .nav-link.active { color: #9b87f5; background: #2d2d44; }
+
+/* Переключатель темы содержит две иконки, CSS анимирует переход между ними. */
+.theme-toggle {
+    background: #f0f0f0; border: none; width: 44px; height: 44px; border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+body.dark .theme-toggle { background: #2d2d44; }
+.theme-toggle i { font-size: 20px; transition: all 0.3s ease; position: absolute; }
+.theme-toggle .fa-moon { opacity: 1; transform: translateY(0); color: #4F46E5; }
+.theme-toggle .fa-sun { opacity: 0; transform: translateY(20px); color: #f39c12; }
+.theme-toggle.dark .fa-moon { opacity: 0; transform: translateY(-20px); }
+.theme-toggle.dark .fa-sun { opacity: 1; transform: translateY(0); }
+.theme-toggle:hover { transform: scale(1.05); background: #e0e0e0; }
+.logo:focus-visible, .nav-link:focus-visible, .theme-toggle:focus-visible {
+    outline: 3px solid rgba(79,70,229,0.3);
+    outline-offset: 4px;
+}
+
+/* Основная область ограничена той же шириной, что и шапка. */
+.main { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+/* На узких экранах шапка складывается в вертикальный layout. */
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; gap: 12px; }
+    .nav { flex-wrap: wrap; justify-content: center; }
+}

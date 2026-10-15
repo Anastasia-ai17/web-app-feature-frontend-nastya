@@ -1,0 +1,71 @@
+/* Глобальный reset: убирает стандартные отступы браузера и включает предсказуемый box model. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Базовый фон и шрифт всего React-приложения. */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+    color: #1f2937;
+}
+
+/* Глобальная тёмная тема включается ThemeContext через класс body.dark. */
+body.dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e0e0;
+}
+
+/* Общий контейнер страниц: ограничивает ширину контента и добавляет боковые отступы. */
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Анимации */
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Кастомные темы магазина меняют фон страницы, круг таймера, активные ссылки и primary-кнопки. */
+
+/* Тема: Стандартная (светлая и тёмная) */
+body.theme-default .timer-circle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+body.dark.theme-default .timer-circle { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+body.theme-default .mode-badge, body.theme-default .nav-link.active { background: #EEF2FF; color: #4F46E5; }
+body.dark.theme-default .mode-badge, body.dark.theme-default .nav-link.active { background: #2d2d44; color: #9b87f5; }
+body.theme-default .control-btn.primary { background: #4F46E5; }
+body.theme-default .control-btn.primary:hover { background: #4338CA; }
+body.dark.theme-default .control-btn.primary { background: #4F46E5; }
+body.dark.theme-default .control-btn.primary:hover { background: #4338CA; }
+
+/* Тема: Лесная */
+body.theme-forest { background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%); }
+body.dark.theme-forest { background: linear-gradient(135deg, #0a2f1f 0%, #051a0f 100%); }
+body.theme-forest .timer-circle { background: linear-gradient(135deg, #40916c, #2d6a4f); }
+body.dark.theme-forest .timer-circle { background: linear-gradient(135deg, #1b4332, #0a2f1f); }
+body.theme-forest .mode-badge, body.theme-forest .nav-link.active { background: #40916c; color: #d8f3dc; }
+body.dark.theme-forest .mode-badge, body.dark.theme-forest .nav-link.active { background: #1b4332; color: #b7e4c7; }
+body.theme-forest .control-btn.primary { background: #40916c; }
+body.theme-forest .control-btn.primary:hover { background: #2d6a4f; }
+
+/* Тема: Рассвет-Закат */
+body.theme-twilight { background: linear-gradient(135deg, #fef08a 0%, #f97316 50%, #ec4899 100%); }
+body.dark.theme-twilight { background: linear-gradient(135deg, #451a03 0%, #7f1d1d 50%, #831843 100%); }
+body.theme-twilight .timer-circle { background: linear-gradient(135deg, #f97316, #ec4899); }
+body.dark.theme-twilight .timer-circle { background: linear-gradient(135deg, #7f1d1d, #831843); }
+body.theme-twilight .mode-badge, body.theme-twilight .nav-link.active { background: #f97316; color: #fef08a; }
+body.dark.theme-twilight .mode-badge, body.dark.theme-twilight .nav-link.active { background: #7f1d1d; color: #fecdd3; }
+body.theme-twilight .control-btn.primary { background: #f97316; }
+body.theme-twilight .control-btn.primary:hover { background: #ea580c; }
+body.dark.theme-twilight .control-btn.primary { background: #7f1d1d; }
+body.dark.theme-twilight .control-btn.primary:hover { background: #991b1b; }
+
+/* Тема: Розовая мечта */
+body.theme-dream { background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 50%, #f472b6 100%); }
+body.dark.theme-dream { background: linear-gradient(135deg, #4c0519 0%, #9d174d 50%, #be185d 100%); }
+body.theme-dream .timer-circle { background: linear-gradient(135deg, #f9a8d4, #f472b6); }
+body.dark.theme-dream .timer-circle { background: linear-gradient(135deg, #9d174d, #be185d); }
+body.theme-dream .mode-badge, body.theme-dream .nav-link.active { background: #f472b6; color: #fce7f3; }
+body.dark.theme-dream .mode-badge, body.dark.theme-dream .nav-link.active { background: #be185d; color: #fce7f3; }
+body.theme-dream .control-btn.primary { background: #f472b6; }
+body.theme-dream .control-btn.primary:hover { background: #ec4899; }
+body.dark.theme-dream .control-btn.primary { background: #be185d; }
+body.dark.theme-dream .control-btn.primary:hover { background: #9d174d; }

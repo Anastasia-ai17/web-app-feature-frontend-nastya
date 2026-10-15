@@ -1,0 +1,73 @@
+/* Общие стили экранов входа и регистрации. */
+
+/* Страница авторизации уже, чем основные страницы приложения. */
+.auth-page { max-width: 440px; margin: 0 auto; width: 100%; padding: 20px; }
+
+/* Карточка формы визуально отделяет поля от фонового градиента. */
+.auth-page .card {
+    background: white; border-radius: 20px; padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: slideUp 0.5s ease; width: 100%;
+}
+body.dark .auth-page .card { background: #1e1e2f; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.auth-page .logo { text-align: center; margin-bottom: 20px; }
+.auth-page .logo svg { display: block; margin: 0 auto; }
+.auth-page h2 { text-align: center; font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+body.dark .auth-page h2 { color: #e0e0e0; }
+.auth-page .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
+body.dark .auth-page .subtitle { color: #aaa; }
+
+/* Ошибки API показываются над формой одним блоком. */
+.auth-page .form-feedback {
+    margin-bottom: 18px; padding: 12px 14px; border-radius: 14px;
+    font-size: 14px; line-height: 1.5;
+}
+.auth-page .form-feedback.error { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+body.dark .auth-page .form-feedback.error { background: rgba(127,29,29,0.35); color: #fecaca; border-color: rgba(248,113,113,0.45); }
+
+/* Поля ввода единообразны для login/register. */
+.auth-page .input-group { margin-bottom: 20px; }
+.auth-page .input-group label { display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 6px; }
+body.dark .auth-page .input-group label { color: #aaa; }
+.auth-page .input-group input {
+    width: 100%; padding: 12px 16px; font-size: 15px; border: 2px solid #e1e1e1;
+    border-radius: 12px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+    background: white; color: #333; box-sizing: border-box;
+}
+body.dark .auth-page .input-group input { background: #2d2d44; border-color: #3d3d5c; color: #e0e0e0; }
+.auth-page .input-group input:focus { outline: none; border-color: #4F46E5; box-shadow: 0 0 0 4px rgba(79,70,229,0.1); }
+
+/* Кнопка показа пароля позиционируется поверх правой части input. */
+.auth-page .password-container { position: relative; display: flex; align-items: center; }
+.auth-page .password-container input { padding-right: 45px; }
+.auth-page .toggle-password {
+    position: absolute; right: 15px; background: none; border: none;
+    cursor: pointer; color: #888; font-size: 18px;
+}
+.auth-page .toggle-password:hover { color: #4F46E5; }
+.auth-page .toggle-password:focus-visible,
+.auth-page .btn:focus-visible,
+.auth-page .register-link a:focus-visible,
+.auth-page .login-link a:focus-visible {
+    outline: 3px solid rgba(79,70,229,0.25);
+    outline-offset: 3px;
+}
+.auth-page .hint { display: block; font-size: 12px; color: #888; margin-top: 4px; }
+
+/* Подсказка совпадения паролей используется только на регистрации. */
+.auth-page .password-match { font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+.auth-page .match-success { color: #10b981; }
+.auth-page .match-error { color: #ef4444; }
+
+/* Основная кнопка формы блокируется во время запроса. */
+.auth-page .btn {
+    width: 100%; padding: 14px; background: #4F46E5; color: white; border: none;
+    border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease; margin-top: 10px;
+}
+.auth-page .btn:hover { background: #4338CA; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(79,70,229,0.3); }
+.auth-page .btn:disabled { background: #a5a5a5; cursor: not-allowed; transform: none; }
+
+/* Нижние ссылки переключают пользователя между входом и регистрацией. */
+.auth-page .register-link, .auth-page .login-link { text-align: center; margin-top: 25px; font-size: 14px; color: #666; }
+.auth-page .register-link a, .auth-page .login-link a { color: #4F46E5; text-decoration: none; font-weight: 500; }
+.auth-page .register-link a:hover, .auth-page .login-link a:hover { text-decoration: underline; }

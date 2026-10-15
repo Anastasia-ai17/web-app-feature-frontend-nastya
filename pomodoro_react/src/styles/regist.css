@@ -1,0 +1,187 @@
+/* Старый набор стилей формы регистрации.
+   Сейчас Regist.js импортирует auth.css, но файл оставлен как справочный/резервный. */
+
+/* Узкий контейнер формы. */
+.container {
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+/* Основная карточка формы. */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.5s ease;
+    position: relative;
+}
+
+body.dark .card {
+    background: #1e1e2f;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Верхний логотип и заголовок. */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+body.dark h2 {
+    color: #e0e0e0;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+body.dark .subtitle {
+    color: #aaa;
+}
+
+/* Поля формы регистрации. */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+body.dark .input-group label {
+    color: #aaa;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    background: white;
+    color: #333;
+}
+
+body.dark .input-group input {
+    background: #2d2d44;
+    border-color: #3d3d5c;
+    color: #e0e0e0;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Контейнер для поля пароля и кнопки показать/скрыть. */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+}
+
+.toggle-password:hover {
+    color: #4F46E5;
+}
+
+/* Подсказки под паролем и проверка совпадения. */
+.hint {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.password-match {
+    font-size: 12px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.match-success {
+    color: #10b981;
+}
+
+.match-error {
+    color: #ef4444;
+}
+
+/* Основная кнопка отправки формы. */
+.btn {
+    width: 100%;
+    padding: 14px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #4338CA;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.btn:disabled {
+    background: #a5a5a5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Ссылки переключения между входом и регистрацией. */
+.register-link, .login-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+.register-link a, .login-link a {
+    color: #4F46E5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover, .login-link a:hover {
+    text-decoration: underline;
+}

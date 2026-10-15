@@ -1,0 +1,123 @@
+/* Стили главной страницы Pomodoro-таймера. */
+
+/* Центральная карточка держит статус, круг таймера и кнопки управления. */
+.timer-card {
+    background: white; border-radius: 40px; padding: 48px 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center;
+    max-width: 600px; margin: 0 auto 48px; width: 100%;
+}
+body.dark .timer-card { background: #1e1e2f; border: 1px solid #2d2d44; }
+
+/* Статус показывает текущий режим и номер цикла. */
+.timer-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 20px; }
+.mode-badge { padding: 8px 20px; border-radius: 50px; font-size: 15px; font-weight: 600; background: #EEF2FF; color: #4F46E5; }
+body.dark .mode-badge { background: #2d2d44; color: #9b87f5; }
+.cycle-counter { font-size: 14px; color: #666; font-weight: 500; background: #f5f5f5; padding: 8px 20px; border-radius: 50px; }
+body.dark .cycle-counter { background: #2d2d44; color: #aaa; }
+
+/* Круг таймера визуально меняется через темы из global.css. */
+.timer-circle {
+    width: 320px; height: 320px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0 auto 32px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 25px 40px rgba(102,126,234,0.4); border: 4px solid white;
+}
+.timer-display { font-size: 76px; font-weight: 700; color: white; text-shadow: 0 2px 15px rgba(0,0,0,0.2); font-variant-numeric: tabular-nums; }
+
+/* Кнопки управления таймером адаптируются в несколько строк на узких экранах. */
+.timer-controls { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.control-btn {
+    padding: 14px 28px; border: none; border-radius: 60px; font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;
+    background: #f0f0f0; color: #666; border: 1px solid #e0e0e0;
+}
+body.dark .control-btn { background: #2d2d44; color: #e0e0e0; border-color: #3d3d5c; }
+.control-btn.primary { background: #4F46E5; color: white; border: none; box-shadow: 0 8px 20px rgba(79,70,229,0.3); }
+.control-btn.primary:hover { background: #4338CA; transform: translateY(-3px); }
+.control-btn:hover { transform: translateY(-2px); }
+.control-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Видимые focus-состояния нужны для управления с клавиатуры. */
+.control-btn:focus-visible,
+.reset-settings-btn:focus-visible,
+.sound-panel:focus-visible,
+.slider:focus-visible,
+.number-input:focus-visible {
+    outline: 3px solid rgba(79,70,229,0.25);
+    outline-offset: 3px;
+}
+
+/* Блок настроек содержит sliders длительности работы и перерывов. */
+.settings-section { background: white; border-radius: 40px; padding: 40px 35px; margin-bottom: 48px; }
+body.dark .settings-section { background: #1e1e2f; border: 1px solid #2d2d44; }
+.settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.settings-section h3 { font-size: 26px; color: #2d3436; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+body.dark .settings-section h3 { color: #e0e0e0; }
+.settings-lock-badge {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 18px;
+    background: #fff7ed; color: #c2410c; font-size: 14px; font-weight: 700;
+}
+body.dark .settings-lock-badge { background: rgba(124,45,18,0.35); color: #fed7aa; }
+
+/* Grid сам перестраивает настройки в нужное число колонок. */
+.settings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin: 30px 0 25px; }
+.setting-item { background: #f8faff; padding: 22px 20px; border-radius: 28px; transition: transform 0.3s ease; }
+body.dark .setting-item { background: #2d2d44; }
+.setting-item:hover { transform: translateY(-4px); }
+.settings-locked .setting-item:hover { transform: none; }
+.setting-item label { display: block; font-weight: 600; color: #2d3436; margin-bottom: 15px; font-size: 16px; }
+body.dark .setting-item label { color: #e0e0e0; }
+
+/* Slider управляет значением, а value-display показывает текущее число рядом. */
+.slider-container { display: flex; align-items: center; gap: 15px; }
+.slider { flex: 1; height: 8px; -webkit-appearance: none; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 20px; outline: none; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; background: white; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(79,70,229,0.5); border: 2px solid #4F46E5; }
+.slider:disabled { opacity: 0.45; cursor: not-allowed; }
+.slider:disabled::-webkit-slider-thumb { cursor: not-allowed; box-shadow: none; }
+.slider:disabled::-moz-range-thumb { cursor: not-allowed; box-shadow: none; }
+.number-input { width: 75px; padding: 10px 12px; border: 2px solid #e0e7ff; border-radius: 18px; font-size: 16px; font-weight: 600; text-align: center; background: white; }
+body.dark .number-input { background: #1e1e2f; border-color: #3d3d5c; color: #e0e0e0; }
+
+/* Кнопка сброса возвращает классические значения 25/5/15/4. */
+.reset-settings-btn {
+    padding: 14px 28px; background: none; border: 2px solid #e0e7ff; border-radius: 60px;
+    color: #4F46E5; font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+}
+body.dark .reset-settings-btn { border-color: #3d3d5c; color: #9b87f5; }
+.reset-settings-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Панель окончания таймера поверх страницы, по клику останавливает звук. */
+.sound-panel {
+    position: fixed; top: 100px; right: 30px; background: #ff4444; color: white;
+    padding: 16px 25px; border-radius: 60px; box-shadow: 0 10px 30px rgba(255,68,68,0.4);
+    z-index: 1000; cursor: pointer; animation: slideInRight 0.3s ease, pulse 1.5s infinite;
+    display: flex; align-items: center; gap: 15px; border: none;
+}
+
+/* Информационный блок объясняет метод Pomodoro и не связан с состоянием таймера. */
+.info-section { background: white; border-radius: 40px; padding: 50px 40px; }
+body.dark .info-section { background: #1e1e2f; }
+.info-section h2 { text-align: center; font-size: 32px; margin-bottom: 40px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.info-card { text-align: center; padding: 30px 20px; border-radius: 32px; background: #f8faff; transition: transform 0.3s ease; }
+body.dark .info-card { background: #2d2d44; }
+.info-card:hover { transform: translateY(-8px); }
+.info-icon { font-size: 52px; color: #4F46E5; margin-bottom: 20px; }
+.info-card h3 { font-size: 22px; margin-bottom: 16px; color: #2d3436; }
+body.dark .info-card h3 { color: #e0e0e0; }
+.info-card p { color: #666; line-height: 1.7; }
+body.dark .info-card p { color: #aaa; }
+
+/* Мобильная версия уменьшает круг и переносит панель сигнала вниз. */
+@media (max-width: 768px) {
+    .timer-circle { width: 260px; height: 260px; }
+    .timer-display { font-size: 56px; }
+    .sound-panel { left: 20px; right: 20px; top: auto; bottom: 30px; }
+}
